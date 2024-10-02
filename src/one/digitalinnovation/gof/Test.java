@@ -1,6 +1,10 @@
 package one.digitalinnovation.gof;
 
+import java.math.BigDecimal;
+
 import one.digitalinnovation.gof.facade.Facade;
+import one.digitalinnovation.gof.factory.Conta;
+import one.digitalinnovation.gof.factory.ContaFactory;
 import one.digitalinnovation.gof.singleton.SingletonEager;
 import one.digitalinnovation.gof.singleton.SingletonLazy;
 import one.digitalinnovation.gof.singleton.SingletonLazyHolder;
@@ -52,6 +56,14 @@ public class Test {
 		
 		Facade facade = new Facade();
 		facade.migrarCliente("Venilton", "14801788");
+
+		// Factory
+		Conta contaCorrente = ContaFactory.abrirConta("CONTA_CORRENTE");
+		contaCorrente.deposito(new BigDecimal(100));
+		contaCorrente.saque(new BigDecimal(50));
+		Conta contaPoupanca = ContaFactory.abrirConta("CONTA_POUPANCA");
+		contaPoupanca.deposito(new BigDecimal(100));
+		contaPoupanca.saque(new BigDecimal(50));		
 	}
 
 }
